@@ -1,0 +1,11 @@
+<players root="gfx/characters/costumes/"
+         nameimageroot="gfx/ui/boss/"
+         portraitroot="gfx/ui/stage/" >
+
+  <player hp="6" bombs="1" name="imitator"
+          nameimage="playername_imitator.png"
+          portrait="playerportrait_imitator.png"
+          skin="imitator.png"
+          items = "733"
+          skinColor="-1"/>
+</players>

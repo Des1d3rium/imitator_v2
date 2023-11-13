@@ -1,0 +1,23 @@
+<items gfxroot="gfx/items/" version="1" deathanm2="gfx/death items.anm2">
+  <active name="mimesis" id="733" description="mimic boss" gfx="mimesis.png" quality="3" chargetype="special" />
+
+  <active name="MonstroMimesis" id="734" description="Learn to be Monstro" gfx="MonstroMimesis.png" quality="1" hidden="true" craftquality="-1" maxcharges="60" initcharge="60" chargetype="timed" />
+
+  <passive name="MonstroMimic" id="735" gfx="Monstro.png" description="Learn to be Monstro" />
+
+  <active name="LarryMimesis" id="736" description="Learn to be Larry" gfx="LarryMimesis.png" quality="1" hidden="true" craftquality="-1" maxcharges="60" initcharge="60" chargetype="timed" />
+
+  <passive name="LarryMimic" id="737" gfx="Larry.png" description="Learn to be Larry" />
+
+  <active name="GenimiMimesis" id="738" description="Learn to be Genimi" gfx="GenimiMimesis.png" quality="1" hidden="true" craftquality="-1" maxcharges="60" initcharge="60" chargetype="timed" />
+
+  <passive name="GenimiMimic" id='739' gfx="Genimi.png" description="Learn to be Genimi" />
+
+  <active name="StevenMimiesis" id="740" gfx="StevenMimesis.png" description="Learn to be Steven" quality="1" hidden="true" craftquality="-1" maxcharges="60" initcharge="60" chargetype="timed" />
+
+  <passive name="StevenMimic" id='741' gfx="Steven.png" description="Learn to be Steven" />
+
+  <active name="DukeMimesis" id="742" gfx="DukeMimesis.png" description="Learn to be Duck" quality="1" hidden="true" craftquality="-1" maxcharges="60" initcharge="60" chargetype="timed" />
+
+  <passive name="DukeMimic" id='743' gfx="DukeMimesis.png" description="Learn to be Duck" />
+</items>
