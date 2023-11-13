@@ -8,6 +8,8 @@ let mimicTrack = new Map([
   ["MonstroMimic", false],
   ["LarryMimic", false],
   ["GenimiMimic", false],
+  ["StevenMimic", false],
+  ["DukeMimic", false],
 ]);
 
 export function isMimicSpecificBoss(bossName: string): boolean | undefined {
