@@ -1,19 +1,18 @@
 import {
   CollectibleType,
   EntityType,
-  FamiliarVariant,
+  LittleHornSubType,
+  LittleHornVariant,
   PickupVariant,
 } from "isaac-typescript-definitions";
 import {
   addCollectible,
   doesEntityExist,
   findFreePosition,
-  getRandomInt,
   hasCollectible,
   spawn,
   spawnCollectible,
 } from "isaacscript-common";
-
 import {
   iterateMimicTrack,
   removePreviousMimic,
@@ -22,51 +21,48 @@ import {
 
 let isNotFirstUse = false;
 
-export function ifPlayerPickupDuke() {
+export function ifPlayerPickupLittleHorn() {
   const postMimic = iterateMimicTrack();
   removePreviousMimic(postMimic);
-  addCollectible(Isaac.GetPlayer(), CollectibleType.SKATOLE);
-  addCollectible(Isaac.GetPlayer(), Isaac.GetItemIdByName("DukeMimesis"));
+  addCollectible(Isaac.GetPlayer(), CollectibleType.LITTLE_HORN);
+  addCollectible(Isaac.GetPlayer(), Isaac.GetItemIdByName("LittleHornMimesis"));
 
-  if (postMimic !== "Not found" && postMimic !== "DukeMimic") {
+  if (postMimic !== "Not found" && postMimic !== "LittleHornMimic") {
     spawnCollectible(
       Isaac.GetItemIdByName(postMimic),
       findFreePosition(Vector(300, 280)),
       undefined,
     );
   }
-  setMimicSpecificBoss("DukeMimic", true);
   setMimicSpecificBoss(postMimic, false);
+  setMimicSpecificBoss("LittleHornMimic", true);
   isNotFirstUse = false;
 }
 
-export function postBossDukeDefeated() {
+export function postBossLittleHornDefeated() {
   if (
     !doesEntityExist(
       EntityType.PICKUP,
       PickupVariant.COLLECTIBLE,
-      Isaac.GetItemIdByName("DukeMimic"),
+      Isaac.GetItemIdByName("LittleHornMimic"),
     ) &&
-    !hasCollectible(Isaac.GetPlayer(), Isaac.GetItemIdByName("DukeMimic"))
+    !hasCollectible(Isaac.GetPlayer(), Isaac.GetItemIdByName("LittleHornMimic"))
   ) {
     spawnCollectible(
-      Isaac.GetItemIdByName("DukeMimic"),
+      Isaac.GetItemIdByName("LittleHornMimic"),
       findFreePosition(Vector(300, 280)),
       undefined,
     );
   }
 }
 
-export function dukeMimesisOnUse() {
-  const numberOfFlies = getRandomInt(4, 8, undefined);
-  for (let i = 0; i < numberOfFlies; i++) {
-    const typeOfFly = getRandomInt(0, 5, undefined);
-    spawn(
-      EntityType.FAMILIAR,
-      FamiliarVariant.BLUE_FLY,
-      typeOfFly,
-      findFreePosition(Isaac.GetPlayer().Position),
-    );
-  }
+export function littleHornMimesisOnUse(): boolean {
+  const darkball = spawn(
+    EntityType.LITTLE_HORN,
+    LittleHornVariant.DARK_BALL,
+    LittleHornSubType.NORMAL,
+    findFreePosition(Isaac.GetPlayer().Position),
+  );
+  darkball.AddCharmed(EntityRef(Isaac.GetPlayer()), -1);
   return true;
 }

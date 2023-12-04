@@ -2,15 +2,14 @@ import {
   CollectibleType,
   EntityType,
   PickupVariant,
-  TrinketType,
 } from "isaac-typescript-definitions";
 import {
   addCollectible,
   doesEntityExist,
   findFreePosition,
   hasCollectible,
-  smeltTrinket,
   spawnCollectible,
+  useActiveItemTemp,
 } from "isaacscript-common";
 import {
   iterateMimicTrack,
@@ -20,13 +19,13 @@ import {
 
 let isNotFirstUse = false;
 
-export function ifPlayerPickupLarry() {
+export function ifPlayerPickupBabyPlum() {
   const postMimic = iterateMimicTrack();
   removePreviousMimic(postMimic);
-  smeltTrinket(Isaac.GetPlayer(), TrinketType.BRAIN_WORM);
-  addCollectible(Isaac.GetPlayer(), Isaac.GetItemIdByName("LarryMimesis"));
+  addCollectible(Isaac.GetPlayer(), CollectibleType.BLUE_BABYS_ONLY_FRIEND);
+  addCollectible(Isaac.GetPlayer(), Isaac.GetItemIdByName("BabyPlumMimesis"));
 
-  if (postMimic !== "Not found" && postMimic !== "LarryMimic") {
+  if (postMimic !== "Not found" && postMimic !== "BabyPlumMimic") {
     spawnCollectible(
       Isaac.GetItemIdByName(postMimic),
       findFreePosition(Vector(300, 280)),
@@ -34,28 +33,28 @@ export function ifPlayerPickupLarry() {
     );
   }
   setMimicSpecificBoss(postMimic, false);
-  setMimicSpecificBoss("LarryMimic", true);
+  setMimicSpecificBoss("BabyPlumMimic", true);
   isNotFirstUse = false;
 }
 
-export function postBossLarryDefeated() {
+export function postBossBabyPlumDefeated() {
   if (
     !doesEntityExist(
       EntityType.PICKUP,
       PickupVariant.COLLECTIBLE,
-      Isaac.GetItemIdByName("LarryMimic"),
+      Isaac.GetItemIdByName("BabyPlumMimic"),
     ) &&
-    !hasCollectible(Isaac.GetPlayer(), Isaac.GetItemIdByName("LarryMimic"))
+    !hasCollectible(Isaac.GetPlayer(), Isaac.GetItemIdByName("BabyPlumMimic"))
   ) {
     spawnCollectible(
-      Isaac.GetItemIdByName("LarryMimic"),
+      Isaac.GetItemIdByName("BabyPlumMimic"),
       findFreePosition(Vector(300, 280)),
       undefined,
     );
   }
 }
 
-export function larryMimesisOnUse(): boolean {
-  Isaac.GetPlayer().UseActiveItem(CollectibleType.WHITE_PONY);
+export function babyPlumMimesisOnUse(): boolean {
+  useActiveItemTemp(Isaac.GetPlayer(), CollectibleType.PLUM_FLUTE);
   return true;
 }

@@ -11,13 +11,21 @@
 
   <active name="GenimiMimesis" id="738" description="Learn to be Genimi" gfx="GenimiMimesis.png" quality="1" hidden="true" craftquality="-1" maxcharges="60" initcharge="60" chargetype="timed" />
 
-  <passive name="GenimiMimic" id='739' gfx="Genimi.png" description="Learn to be Genimi" />
+  <passive name="GenimiMimic" id="739" gfx="Genimi.png" description="Learn to be Genimi" />
 
   <active name="StevenMimiesis" id="740" gfx="StevenMimesis.png" description="Learn to be Steven" quality="1" hidden="true" craftquality="-1" maxcharges="60" initcharge="60" chargetype="timed" />
 
-  <passive name="StevenMimic" id='741' gfx="Steven.png" description="Learn to be Steven" />
+  <passive name="StevenMimic" id="741" gfx="Steven.png" description="Learn to be Steven" />
 
-  <active name="DukeMimesis" id="742" gfx="DukeMimesis.png" description="Learn to be Duck" quality="1" hidden="true" craftquality="-1" maxcharges="60" initcharge="60" chargetype="timed" />
+  <active name="DukeMimesis" id="742" gfx="DukeMimesis.png" description="Learn to be Duke" quality="1" hidden="true" craftquality="-1" maxcharges="60" initcharge="60" chargetype="timed" />
 
-  <passive name="DukeMimic" id='743' gfx="DukeMimesis.png" description="Learn to be Duck" />
+  <passive name="DukeMimic" id="743" gfx="Duke.png" description="Learn to be Duke" />
+
+  <active name="HauntMimesis" id="744" gfx="Haunt.png" description="Learn to be Haunt" quality="1" hidden="true" craftquality="-1" maxcharges="60" initcharge="60" chargetype="timed" />
+
+  <passive name="HauntMimic" id="745" gfx="HauntMimesis" description="Learn to be Haunt" />
+
+  <active name="MomMimesis" id="746" gfx="Mom.png" description="Learn to be Mom" quality="1" hidden="true" craftquality="-1" maxcharges="60" initcharge="60" chargetype="timed" />
+
+  <passive name="MomMimic" id="747" gfx="MomMimesis" description="Learn to be Mom" />
 </items>

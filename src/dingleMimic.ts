@@ -1,5 +1,6 @@
 import {
   CollectibleType,
+  DipVariant,
   EntityType,
   FamiliarVariant,
   PickupVariant,
@@ -13,7 +14,6 @@ import {
   spawn,
   spawnCollectible,
 } from "isaacscript-common";
-
 import {
   iterateMimicTrack,
   removePreviousMimic,
@@ -22,49 +22,48 @@ import {
 
 let isNotFirstUse = false;
 
-export function ifPlayerPickupDuke() {
+export function ifPlayerPickupDingle() {
   const postMimic = iterateMimicTrack();
   removePreviousMimic(postMimic);
-  addCollectible(Isaac.GetPlayer(), CollectibleType.SKATOLE);
-  addCollectible(Isaac.GetPlayer(), Isaac.GetItemIdByName("DukeMimesis"));
+  addCollectible(Isaac.GetPlayer(), CollectibleType.DIRTY_MIND);
+  addCollectible(Isaac.GetPlayer(), Isaac.GetItemIdByName("DingleMimesis"));
 
-  if (postMimic !== "Not found" && postMimic !== "DukeMimic") {
+  if (postMimic !== "Not found" && postMimic !== "DingleMimic") {
     spawnCollectible(
       Isaac.GetItemIdByName(postMimic),
       findFreePosition(Vector(300, 280)),
       undefined,
     );
   }
-  setMimicSpecificBoss("DukeMimic", true);
   setMimicSpecificBoss(postMimic, false);
+  setMimicSpecificBoss("DingleMimic", true);
   isNotFirstUse = false;
 }
 
-export function postBossDukeDefeated() {
+export function postBossDingleDefeated() {
   if (
     !doesEntityExist(
       EntityType.PICKUP,
       PickupVariant.COLLECTIBLE,
-      Isaac.GetItemIdByName("DukeMimic"),
+      Isaac.GetItemIdByName("DingleMimic"),
     ) &&
-    !hasCollectible(Isaac.GetPlayer(), Isaac.GetItemIdByName("DukeMimic"))
+    !hasCollectible(Isaac.GetPlayer(), Isaac.GetItemIdByName("DingleMimic"))
   ) {
     spawnCollectible(
-      Isaac.GetItemIdByName("DukeMimic"),
+      Isaac.GetItemIdByName("DingleMimic"),
       findFreePosition(Vector(300, 280)),
       undefined,
     );
   }
 }
 
-export function dukeMimesisOnUse() {
-  const numberOfFlies = getRandomInt(4, 8, undefined);
-  for (let i = 0; i < numberOfFlies; i++) {
-    const typeOfFly = getRandomInt(0, 5, undefined);
+export function dingleMimesisOnUse(): boolean {
+  const numberOfDingles = getRandomInt(4, 8, undefined);
+  for (let i = 0; i < numberOfDingles; i++) {
     spawn(
       EntityType.FAMILIAR,
-      FamiliarVariant.BLUE_FLY,
-      typeOfFly,
+      FamiliarVariant.DIP,
+      DipVariant.DIP,
       findFreePosition(Isaac.GetPlayer().Position),
     );
   }
