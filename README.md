@@ -4,7 +4,7 @@ imitator is a mod for [_The Binding of Isaac: Repentance_](https://store.steampo
 
 ## How To Play
 
-For normal people, you can play the mod by subscribing to it on [the Steam Workshop](https://steamcommunity.com/app/250900/workshop/). (Subscribing to the mod will automatically download and install it once you launch the game.)
+For normal people, you can play the mod by putting files in [release](https://github.com/AinfinitedZ/imitator_v2/releases/tag/v1.0) into `mod` folders under `The Binding of Isaac`(you could find the folder by browse local file in Steam). 
 
 ## How To Compile
 
@@ -22,3 +22,12 @@ If you are a developer, or if the mod is not yet uploaded to the Steam Workshop,
 - Use the `npx isaacscript` command to start the IsaacScript watcher.
 - If IsaacScript is successful, you will see "Compilation successful." (You can continue to leave the terminal window open; it will monitor for changes in your project, and recompile if necessary.)
 - Completely close Isaac if it is already open, and then open the game again, and the mod should be in the list of mods. You can now play or test the mod.
+
+## For graders
+
+In this project, we have used dependencies from [IsaacScript](https://isaacscript.github.io/). Our original codes are stored in `src`(mostly .ts files), `test`, and `content`(mostly .xml files). 
+
+## Status of known bugs
+
+Due to definition in dependency library, `ReferenceError: BitSet128 is not defined` would occurs if one directly run `mimic.test.ts`. We can't determine the cause of this exception. If one want to test the file, one has to comment the dependencies out, and cancel comments after the test is done. 
+
