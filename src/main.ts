@@ -29,11 +29,21 @@ import {
   postBossDukeDefeated,
 } from "./dukeMimic";
 import {
+  famineMimesisOnUse,
+  ifPlayerPickupFamine,
+  postBossFamineDefeated,
+} from "./famineMimic";
+import {
   genimiMimesisOnUse,
   ifPlayerPickupGenimi,
   postBossGenimiBabyDefeated,
   postBossGenimiDefeated,
 } from "./genimiMimic";
+import {
+  gurglingMimesisOnUse,
+  ifPlayerPickupGurgling,
+  postBossGurglingDefeated,
+} from "./gurgling";
 import {
   hauntMimesisOnUse,
   ifPlayerPickupHaunt,
@@ -73,12 +83,18 @@ import {
   postBossStevenDefeated,
   stevenMimesisOnUse,
 } from "./stevenMimic";
+import {
+  ifPlayerPickupWidow,
+  postBossWidowDefeated,
+  widowMimesisOnUse,
+} from "./widow";
 
 const MOD_NAME = "imitator";
 const modVanilla = RegisterMod(MOD_NAME, 1);
 const features = [
   ISCFeature.RUN_IN_N_FRAMES,
   ISCFeature.DISABLE_INPUTS,
+  ISCFeature.RUN_NEXT_ROOM,
 ] as const;
 export const mod = upgradeMod(modVanilla, features);
 
@@ -168,6 +184,7 @@ export function main(): void {
     genimiMimesisOnUse,
     Isaac.GetItemIdByName("GenimiMimesis"),
   );
+
   // Steven Callback handle
   mod.AddCallbackCustom(
     ModCallbackCustom.POST_ENTITY_KILL_FILTER,
@@ -180,6 +197,31 @@ export function main(): void {
     postBossStevenBabyDefeated,
     EntityType.GEMINI,
     GeminiVariant.STEVEN_BABY,
+  );
+  mod.AddCallbackCustom(
+    ModCallbackCustom.POST_ITEM_PICKUP,
+    ifPlayerPickupSteven,
+    1,
+    Isaac.GetItemIdByName("StevenMimic"),
+  );
+  mod.AddCallback(
+    ModCallback.PRE_USE_ITEM,
+    stevenMimesisOnUse,
+    Isaac.GetItemIdByName("StevenMimesis"),
+  );
+
+  // Steven Callback handle
+  mod.AddCallbackCustom(
+    ModCallbackCustom.POST_ENTITY_KILL_FILTER,
+    postBossStevenDefeated,
+    EntityType.GEMINI,
+    GeminiVariant.BLIGHTED_OVUM,
+  );
+  mod.AddCallbackCustom(
+    ModCallbackCustom.POST_ENTITY_KILL_FILTER,
+    postBossStevenBabyDefeated,
+    EntityType.GEMINI,
+    GeminiVariant.BLIGHTED_OVUM_BABY,
   );
   mod.AddCallbackCustom(
     ModCallbackCustom.POST_ITEM_PICKUP,
@@ -339,5 +381,59 @@ export function main(): void {
     ModCallback.PRE_USE_ITEM,
     ragManMimesisOnUse,
     Isaac.GetItemIdByName("RagManMimesis"),
+  );
+
+  // Famine Callback handle
+  mod.AddCallbackCustom(
+    ModCallbackCustom.POST_ENTITY_KILL_FILTER,
+    postBossFamineDefeated,
+    EntityType.FAMINE,
+  );
+  mod.AddCallbackCustom(
+    ModCallbackCustom.POST_ITEM_PICKUP,
+    ifPlayerPickupFamine,
+    1,
+    Isaac.GetItemIdByName("FamineMimic"),
+  );
+  mod.AddCallback(
+    ModCallback.PRE_USE_ITEM,
+    famineMimesisOnUse,
+    Isaac.GetItemIdByName("FamineMimesis"),
+  );
+
+  // Gurgling Callback handle
+  mod.AddCallbackCustom(
+    ModCallbackCustom.POST_ENTITY_KILL_FILTER,
+    postBossGurglingDefeated,
+    EntityType.GURGLING,
+  );
+  mod.AddCallbackCustom(
+    ModCallbackCustom.POST_ITEM_PICKUP,
+    ifPlayerPickupGurgling,
+    1,
+    Isaac.GetItemIdByName("GurglingMimic"),
+  );
+  mod.AddCallback(
+    ModCallback.PRE_USE_ITEM,
+    gurglingMimesisOnUse,
+    Isaac.GetItemIdByName("GurglingMimesis"),
+  );
+
+  // Widow Callback handle
+  mod.AddCallbackCustom(
+    ModCallbackCustom.POST_ENTITY_KILL_FILTER,
+    postBossWidowDefeated,
+    EntityType.WIDOW,
+  );
+  mod.AddCallbackCustom(
+    ModCallbackCustom.POST_ITEM_PICKUP,
+    ifPlayerPickupWidow,
+    1,
+    Isaac.GetItemIdByName("WidowMimic"),
+  );
+  mod.AddCallback(
+    ModCallback.PRE_USE_ITEM,
+    widowMimesisOnUse,
+    Isaac.GetItemIdByName("WidowMimesis"),
   );
 }

@@ -25,7 +25,8 @@ let noPreviousMimic = false;
 
 /*
 this variant is used to count how many red-variant monstro are defeated.
-Under most cases, there would exist two red-variant
+Under most cases, there would exist two red-variant. The collectible will be spawned after
+both of them are defeated.
 */
 let monstroRedVariantCount = 0;
 

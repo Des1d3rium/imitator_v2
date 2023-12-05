@@ -39,6 +39,12 @@ export function resetMimicTrack() {
     ["LittleHornMimic", false],
     ["DingleMimic", false],
     ["DangleMimic", false],
+    ["BabyPlumMimic", false],
+    ["RagManMimic", false],
+    ["FamineMimic", false],
+    ["GurglingMimic", false],
+    ["WidowMimic", false],
+    ["BlightedOvumMimic", false],
   ]);
 }
 
@@ -165,6 +171,43 @@ export function removePreviousMimic(postMimic: string) {
         Isaac.GetItemIdByName("RagManMimic"),
       );
       removeCollectible(Isaac.GetPlayer(), CollectibleType.SPOON_BENDER);
+
+      break;
+    }
+
+    case "FamineMimic": {
+      removeCollectible(
+        Isaac.GetPlayer(),
+        Isaac.GetItemIdByName("FamineMimic"),
+      );
+      removeCollectible(Isaac.GetPlayer(), CollectibleType.CUBE_OF_MEAT);
+
+      break;
+    }
+
+    case "GurglingMimic": {
+      removeCollectible(
+        Isaac.GetPlayer(),
+        Isaac.GetItemIdByName("GurglingMimic"),
+      );
+      removeCollectible(Isaac.GetPlayer(), CollectibleType.CUBE_OF_MEAT);
+
+      break;
+    }
+
+    case "WidowMimic": {
+      removeCollectible(Isaac.GetPlayer(), Isaac.GetItemIdByName("WidowMimic"));
+      removeCollectible(Isaac.GetPlayer(), CollectibleType.JUICY_SACK);
+
+      break;
+    }
+
+    case "BlightedOvumMimic": {
+      removeCollectible(
+        Isaac.GetPlayer(),
+        Isaac.GetItemIdByName("BlightedOvumMimic"),
+      );
+      removeCollectible(Isaac.GetPlayer(), CollectibleType.LIL_BRIMSTONE);
 
       break;
     }
