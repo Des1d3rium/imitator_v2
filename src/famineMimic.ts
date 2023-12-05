@@ -8,6 +8,7 @@ import {
   doesEntityExist,
   findFreePosition,
   hasCollectible,
+  removeCollectible,
   spawnCollectible,
 } from "isaacscript-common";
 
@@ -16,9 +17,9 @@ import {
   removePreviousMimic,
   setMimicSpecificBoss,
 } from "./mimicTrack";
+import { mod } from "./mod";
 
 let isNotFirstUse = false;
-const player = Isaac.GetPlayer();
 
 export function ifPlayerPickupFamine() {
   const postMimic = iterateMimicTrack();
@@ -58,10 +59,8 @@ export function postBossFamineDefeated() {
 export function famineMimesisOnUse(): boolean {
   addCollectible(Isaac.GetPlayer(), CollectibleType.SEVEN_SEALS);
 
-  /*
   mod.runNextRoom(() => {
-    removeCollectible(player, CollectibleType.SEVEN_SEALS);
+    removeCollectible(Isaac.GetPlayer(), CollectibleType.SEVEN_SEALS);
   });
-  */
   return true;
 }

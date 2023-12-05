@@ -7,7 +7,7 @@ import {
   ModCallback,
   MonstroSubType,
 } from "isaac-typescript-definitions";
-import { ISCFeature, ModCallbackCustom, upgradeMod } from "isaacscript-common";
+import { ModCallbackCustom } from "isaacscript-common";
 import {
   babyPlumMimesisOnUse,
   ifPlayerPickupBabyPlum,
@@ -65,6 +65,7 @@ import {
   postBossLittleHornDefeated,
 } from "./littleHornMimic";
 import { resetMimicTrack } from "./mimicTrack";
+import { mod } from "./mod";
 import {
   ifPlayerPickupMom,
   momMimesisOnUse,
@@ -93,15 +94,6 @@ import {
   postBossWidowDefeated,
   widowMimesisOnUse,
 } from "./widow";
-
-const MOD_NAME = "imitator";
-const modVanilla = RegisterMod(MOD_NAME, 1);
-const features = [
-  ISCFeature.RUN_IN_N_FRAMES,
-  ISCFeature.DISABLE_INPUTS,
-  ISCFeature.RUN_NEXT_ROOM,
-] as const;
-export const mod = upgradeMod(modVanilla, features);
 
 export function main(): void {
   mod.AddCallbackCustom(
