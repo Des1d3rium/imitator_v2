@@ -2,7 +2,6 @@ import {
   CardType,
   CollectibleType,
   EntityType,
-  GeminiVariant,
   PickupVariant,
 } from "isaac-typescript-definitions";
 import {
@@ -53,35 +52,7 @@ export function postBossBlightedOvumDefeated() {
     !hasCollectible(
       Isaac.GetPlayer(),
       Isaac.GetItemIdByName("BlightedOvumMimic"),
-    ) &&
-    !doesEntityExist(EntityType.GEMINI, GeminiVariant.BLIGHTED_OVUM_BABY)
-  ) {
-    spawnCollectible(
-      Isaac.GetItemIdByName("BlightedOvumMimic"),
-      findFreePosition(Vector(300, 280)),
-      undefined,
-    );
-  }
-}
-
-/*
-This copy function is used to deal with the priority of doesEntityExist() and POST_ENTITY_KILL callback
-It appears that POST_ENTITY_KILL callback would be fired when doesEntityExist() still return true,
-even the entity is no longer exist in the room. When conjugate boss is meet, both functions are called
-to detect whether its conjugate entity does not exist.
-*/
-export function postBossBlightedOvumBabyDefeated() {
-  if (
-    !doesEntityExist(
-      EntityType.PICKUP,
-      PickupVariant.COLLECTIBLE,
-      Isaac.GetItemIdByName("BlightedOvumMimic"),
-    ) &&
-    !hasCollectible(
-      Isaac.GetPlayer(),
-      Isaac.GetItemIdByName("BlightedOvumMimic"),
-    ) &&
-    !doesEntityExist(EntityType.GEMINI, GeminiVariant.BLIGHTED_OVUM)
+    )
   ) {
     spawnCollectible(
       Isaac.GetItemIdByName("BlightedOvumMimic"),

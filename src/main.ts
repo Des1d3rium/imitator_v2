@@ -14,6 +14,11 @@ import {
   postBossBabyPlumDefeated,
 } from "./babyPlumMimic";
 import {
+  BlightedOvumMimesisOnUse,
+  ifPlayerPickupBlightedOvum,
+  postBossBlightedOvumDefeated,
+} from "./blightedOvum";
+import {
   dangleMimesisOnUse,
   ifPlayerPickupDangle,
   postBossDangleDefeated,
@@ -210,29 +215,23 @@ export function main(): void {
     Isaac.GetItemIdByName("StevenMimesis"),
   );
 
-  // Steven Callback handle
+  // Blighted Ovum Callback handle
   mod.AddCallbackCustom(
     ModCallbackCustom.POST_ENTITY_KILL_FILTER,
-    postBossStevenDefeated,
+    postBossBlightedOvumDefeated,
     EntityType.GEMINI,
     GeminiVariant.BLIGHTED_OVUM,
   );
   mod.AddCallbackCustom(
-    ModCallbackCustom.POST_ENTITY_KILL_FILTER,
-    postBossStevenBabyDefeated,
-    EntityType.GEMINI,
-    GeminiVariant.BLIGHTED_OVUM_BABY,
-  );
-  mod.AddCallbackCustom(
     ModCallbackCustom.POST_ITEM_PICKUP,
-    ifPlayerPickupSteven,
+    ifPlayerPickupBlightedOvum,
     1,
-    Isaac.GetItemIdByName("StevenMimic"),
+    Isaac.GetItemIdByName("BlightedOvumMimic"),
   );
   mod.AddCallback(
     ModCallback.PRE_USE_ITEM,
-    stevenMimesisOnUse,
-    Isaac.GetItemIdByName("StevenMimesis"),
+    BlightedOvumMimesisOnUse,
+    Isaac.GetItemIdByName("BlightedOvumMimesis"),
   );
 
   // Duke of Flies Callback handle
