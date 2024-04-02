@@ -4,7 +4,8 @@ imitator is a mod for [_The Binding of Isaac: Repentance_](https://store.steampo
 
 ## How To Play
 
-For normal people, you can play the mod by putting files in [release](https://github.com/AinfinitedZ/imitator_v2/releases/tag/v1.0) into `mod` folders under `The Binding of Isaac`(you could find the folder by browse local file in Steam). 
+For players, you can play the mod by putting files in [release](https://github.com/AinfinitedZ/imitator_v2/releases/tag/v1.0) into `mod` folders under `The Binding of Isaac`(you could find the folder by browse local file in Steam). 
+
 
 ## How To Compile
 
@@ -23,7 +24,7 @@ If you are a developer, or if the mod is not yet uploaded to the Steam Workshop,
 - If IsaacScript is successful, you will see "Compilation successful." (You can continue to leave the terminal window open; it will monitor for changes in your project, and recompile if necessary.)
 - Completely close Isaac if it is already open, and then open the game again, and the mod should be in the list of mods. You can now play or test the mod.
 
-## For graders
+## For Developers / Graders
 
 In this project, we have used dependencies from [IsaacScript](https://isaacscript.github.io/). Our original codes are stored in `src`(mostly .ts files), `test`, and `content`(mostly .xml files). 
 
